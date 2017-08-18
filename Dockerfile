@@ -1,7 +1,7 @@
 # FROM ubuntu:14.04
 FROM ubuntu:latest
 
-MAINTAINER Jens Hermann <jens.hermann.demo@gmail.com>
+MAINTAINER Jens Hermann v2 <jens.hermann.demo@gmail.com>
 
 # To get rid of error messages like "debconf: unable to initialize frontend: Dialog":
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
