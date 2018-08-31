@@ -1,7 +1,6 @@
-FROM ubuntu:14.04
-# FROM ubuntu:latest
+FROM ubuntu:18.04
 
-MAINTAINER Jens Hermann <jens.hermann.demo@gmail.com>
+MAINTAINER Raymond Ferguson <ray.ferguson@devendortech.com>
 
 # To get rid of error messages like "debconf: unable to initialize frontend: Dialog":
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -10,13 +9,14 @@ ADD asset/* /opt/
 
 RUN apt-get -q update && apt-get install -qy unzip \
     supervisor \
+    openjdk-8-jre-headless \
     wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
 
 RUN wget --no-check-certificate \
-      https://install.service-now.com/glide/distribution/builds/package/mid/2017/07/20/mid.istanbul-09-23-2016__patch8-07-07-2017_07-20-2017_1155.linux.x86-64.zip \
+      https://install.service-now.com/glide/distribution/builds/package/mid/2018/07/14/mid.london-06-27-2018__patch0-07-11-2018_07-14-2018_1223.linux.x86-64.zip \
       -O /tmp/mid.zip && \
     unzip -d /opt /tmp/mid.zip && \
     mv /opt/agent/config.xml /opt/ && \
